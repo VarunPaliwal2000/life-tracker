@@ -24,7 +24,7 @@ export default function SleepTracker() {
         <p>No sleep data yet.</p>
       ) : (
         <ul>
-          {sessions.map((s: any) => (
+          {sessions.map((s : any) => (
             <li key={s.id}>
               {s.startTime} → {s.endTime} ({s.quality})
             </li>
