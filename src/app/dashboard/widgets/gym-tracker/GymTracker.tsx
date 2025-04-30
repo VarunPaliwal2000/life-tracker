@@ -3,12 +3,14 @@ import { Card } from "@/components/UI/Card/Card";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useSleepStore } from "@/hooks/useSleepStore";
 import { useEffect } from "react";
+import { useGymTrackerColumns } from "./useGymTrackerColumns";
 
-export default function SleepTracker() {
-  // const { sessions, setSessions } = useSleepStore();
+export default function GymTracker() {
+  //   const { sessions, setSessions } = useSleepStore();
   const { setSessions } = useSleepStore();
   const { log } = useAnalytics();
-
+  const { workoutData, workoutColumns } = useGymTrackerColumns();
+  console.log(workoutData, workoutColumns, " workoutData, workoutColumns");
   useEffect(() => {
     async function fetchSessions() {
       const res = await fetch("/api/widgets/sleep-tracker");
@@ -20,18 +22,10 @@ export default function SleepTracker() {
   }, []);
 
   return (
-    <Card title="Sleep Tracker">
-      {/* {sessions.length === 0 ? (
-        <p>No sleep data yet.</p>
-      ) : (
-        <ul>
-          {sessions.map((s: any) => (
-            <li key={s.id}>
-              {s.startTime} → {s.endTime} ({s.quality})
-            </li>
-          ))}
-        </ul>
-      )} */}
-    </Card>
+    <Card
+      title="Gym Tracker"
+      workoutData={workoutData}
+      workoutColumns={workoutColumns}
+    />
   );
 }

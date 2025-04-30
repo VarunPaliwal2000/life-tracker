@@ -1,9 +1,14 @@
+import GymTracker from "./widgets/gym-tracker/GymTracker";
 import SleepTracker from "./widgets/sleep-tracker/SleepTracker";
 
 export default function DashboardPage() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="flex flex-wrap gap-4">
       <SleepTracker />
+      <GymTracker />
+      <GymTracker />
+      <GymTracker />
+      <GymTracker />
     </div>
   );
 }

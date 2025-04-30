@@ -1,0 +1,16 @@
+.card-main-parent {
+  width: 32.591vw;
+  height: 65.029vh;
+  border-radius: 0.911vw;
+  background: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  .title-header-card {
+    display: flex;
+    justify-content: space-between;
+  }
+  .body-content-card {
+    justify-content: space-between;
+    display: flex;
+  }
+}
