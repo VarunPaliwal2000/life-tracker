@@ -16,6 +16,12 @@ type WorkoutLog = {
   navigation: string;
 };
 
+type LatestLog = {
+  musclegroup: MuscleGroup;
+  PR: string;
+  lastPR: string;
+};
+
 type IconType = ForwardRefExoticComponent<
   IconProps & RefAttributes<SVGSVGElement>
 >;
@@ -30,6 +36,33 @@ export const useGymTrackerColumns = () => {
     { date: "2025-04-29", musclegroup: "Legs", navigation: "key" },
     { date: "2025-04-29", musclegroup: "Chest", navigation: "key" },
     { date: "2025-04-29", musclegroup: "Legs", navigation: "key" },
+    { date: "2025-04-29", musclegroup: "Chest", navigation: "key" },
+    { date: "2025-04-29", musclegroup: "Legs", navigation: "key" },
+    { date: "2025-04-29", musclegroup: "Chest", navigation: "key" },
+    { date: "2025-04-29", musclegroup: "Legs", navigation: "key" },
+  ];
+
+  const latestWorkoutSynopsis: LatestLog[] = [
+    {
+      musclegroup: "Chest",
+      PR: "12-12-12 / 45lbs",
+      lastPR: "12-12-10 / 45lbs",
+    },
+    {
+      musclegroup: "Chest",
+      PR: "12-12-12 / 45lbs",
+      lastPR: "12-12-10 / 45lbs",
+    },
+    {
+      musclegroup: "Chest",
+      PR: "12-12-12 / 45lbs",
+      lastPR: "12-12-10 / 45lbs",
+    },
+    {
+      musclegroup: "Chest",
+      PR: "12-12-12 / 45lbs",
+      lastPR: "12-12-10 / 45lbs",
+    },
   ];
 
   const muscleGroupIconMap: Record<MuscleGroup, IconType> = {
@@ -74,5 +107,16 @@ export const useGymTrackerColumns = () => {
     },
   ];
 
-  return { workoutData, workoutColumns };
+  const latestWorkoutColumns: ColumnDef<LatestLog>[] = [
+    { accessorKey: "musclegroup", header: "" },
+    { accessorKey: "PR", header: "Latest PR" },
+    { accessorKey: "lastPR", header: "Last PR" },
+  ];
+
+  return {
+    workoutData,
+    workoutColumns,
+    latestWorkoutSynopsis,
+    latestWorkoutColumns,
+  };
 };

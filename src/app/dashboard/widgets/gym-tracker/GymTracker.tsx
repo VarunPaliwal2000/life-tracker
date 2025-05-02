@@ -9,7 +9,12 @@ export default function GymTracker() {
   //   const { sessions, setSessions } = useSleepStore();
   const { setSessions } = useSleepStore();
   const { log } = useAnalytics();
-  const { workoutData, workoutColumns } = useGymTrackerColumns();
+  const {
+    workoutData,
+    workoutColumns,
+    latestWorkoutSynopsis,
+    latestWorkoutColumns,
+  } = useGymTrackerColumns();
   console.log(workoutData, workoutColumns, " workoutData, workoutColumns");
   useEffect(() => {
     async function fetchSessions() {
@@ -26,6 +31,8 @@ export default function GymTracker() {
       title="Gym Tracker"
       workoutData={workoutData}
       workoutColumns={workoutColumns}
+      latestWorkoutSynopsis ={ latestWorkoutSynopsis}
+      latestWorkoutColumns={latestWorkoutColumns}
     />
   );
 }

@@ -1,6 +1,8 @@
+"use-client";
 export function CustomInput({
   placeholder,
   label,
+  onclick,
   leftIcon,
   leftIconClick,
   rightIcon,
@@ -10,6 +12,7 @@ export function CustomInput({
 }: {
   placeholder: string;
   value: any;
+  onclick: any;
   onChange: any;
   leftIcon?: any;
   rightIcon?: any;
@@ -23,26 +26,38 @@ export function CustomInput({
         <label htmlFor="input" className="text-gray-700">
           {label}
         </label>
-        <div className="relative">
+        <div className="relative flex gap-1 justify-between border rounded-xs shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
           {leftIcon && (
             <div
-              className="absolute left-1 top-1/2 transform -translate-y-1/2"
+              // className="absolute left-1 top-1/2 transform -translate-y-1/2"
               onClick={leftIconClick}
             >
               {leftIcon}
             </div>
           )}
-          <input
-            id="input"
-            type="text"
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            className="w-28 pl-9 pr-6 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
+          {onclick ? (
+            <div
+              id="input"
+              onClick={onclick}
+              // className="border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              {Array.isArray(value)
+                ? `${value[0].toLocaleDateString()} - ${value[1].toLocaleDateString()}`
+                : value.toLocaleDateString()}
+            </div>
+          ) : (
+            <input
+              id="input"
+              type="text"
+              value={value}
+              onChange={onChange}
+              placeholder={placeholder}
+              // className="w-28 pl-9 pr-6 py-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          )}
           {rightIcon && (
             <div
-              className="absolute right-1 top-1/2 transform -translate-y-1/2"
+              // className="absolute right-1 top-1/2 transform -translate-y-1/2"
               onClick={rightIconClick}
             >
               {rightIcon}
@@ -50,16 +65,6 @@ export function CustomInput({
           )}
         </div>
       </div>
-      {/* <div className="flex">
-        {leftIcon}
-        <input
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-        />
-        {rightIcon}
-      </div> */}
     </div>
   );
 }
