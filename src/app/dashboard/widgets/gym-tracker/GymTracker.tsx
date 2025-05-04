@@ -24,6 +24,7 @@ export default function GymTracker() {
       log("load_sleep_sessions", { count: data.length });
     }
     fetchSessions();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

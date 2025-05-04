@@ -6,9 +6,9 @@ export default function DashboardPage() {
     <div className="flex flex-wrap gap-4">
       {/* <SleepTracker /> */}
       <GymTracker />
+      {/* <GymTracker />
       <GymTracker />
-      <GymTracker />
-      <GymTracker />
+      <GymTracker /> */}
     </div>
   );
 }

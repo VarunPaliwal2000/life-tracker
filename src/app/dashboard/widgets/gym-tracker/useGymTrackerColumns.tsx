@@ -1,3 +1,4 @@
+import { MuscleGroup, WorkoutLog } from "@/app/types/workoutFlowTypes";
 import { MuscleGroupAvatar } from "@/components/UI/MuscleGroupAvatar/MuscleGroupAvatar";
 import { ColumnDef } from "@tanstack/react-table";
 import {
@@ -8,19 +9,6 @@ import {
 } from "phosphor-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
-type MuscleGroup = "Chest" | "Legs";
-
-type WorkoutLog = {
-  date: string;
-  musclegroup: MuscleGroup;
-  navigation: string;
-};
-
-type LatestLog = {
-  musclegroup: MuscleGroup;
-  PR: string;
-  lastPR: string;
-};
 
 type IconType = ForwardRefExoticComponent<
   IconProps & RefAttributes<SVGSVGElement>
@@ -42,7 +30,7 @@ export const useGymTrackerColumns = () => {
     { date: "2025-04-29", musclegroup: "Legs", navigation: "key" },
   ];
 
-  const latestWorkoutSynopsis: LatestLog[] = [
+  const latestWorkoutSynopsis: WorkoutLog[] = [
     {
       musclegroup: "Chest",
       PR: "12-12-12 / 45lbs",
@@ -107,7 +95,7 @@ export const useGymTrackerColumns = () => {
     },
   ];
 
-  const latestWorkoutColumns: ColumnDef<LatestLog>[] = [
+  const latestWorkoutColumns: ColumnDef<WorkoutLog>[] = [
     { accessorKey: "musclegroup", header: "" },
     { accessorKey: "PR", header: "Latest PR" },
     { accessorKey: "lastPR", header: "Last PR" },

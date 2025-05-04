@@ -47,7 +47,7 @@ export function Card({
           <div id="footer" className="flex justify-between">
             <button>Lets Log</button>
             <button>Navigate</button>
-            {/* <CaretDoubleRight size={32} /> */}
+            {/* <CaretDoubleRight size={32} /> */}  
           </div>
         </div>
         {workoutColumns && workoutData && (

@@ -1,5 +1,4 @@
 "use client";
-import { Card } from "@/components/UI/Card/Card";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useSleepStore } from "@/hooks/useSleepStore";
 import { useEffect } from "react";
@@ -17,10 +16,11 @@ export default function SleepTracker() {
       log("load_sleep_sessions", { count: data.length });
     }
     fetchSessions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Card title="Sleep Tracker">
+    <div title="Sleep Tracker">
       {/* {sessions.length === 0 ? (
         <p>No sleep data yet.</p>
       ) : (
@@ -32,6 +32,6 @@ export default function SleepTracker() {
           ))}
         </ul>
       )} */}
-    </Card>
+    </div>
   );
 }

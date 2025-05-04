@@ -42,8 +42,10 @@ export function CustomInput({
               // className="border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               {Array.isArray(value)
-                ? `${value[0].toLocaleDateString()} - ${value[1].toLocaleDateString()}`
-                : value.toLocaleDateString()}
+                ? `${value[0].toLocaleDateString(
+                    "en-US"
+                  )} - ${value[1].toLocaleDateString("en-US")}`
+                : value.toLocaleDateString("en-US")}
             </div>
           ) : (
             <input
