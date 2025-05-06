@@ -13,15 +13,19 @@ export function Card({
   workoutColumns,
   latestWorkoutSynopsis,
   latestWorkoutColumns,
+  setPopUpIsOpen,
 }: {
   title: string;
+  setPopUpIsOpen: any;
   workoutData: any;
   workoutColumns: any;
   latestWorkoutSynopsis: any;
   latestWorkoutColumns: any;
 }) {
   const [calendarInput, setCalendarInput] = useState<Date | Date[]>(new Date());
-
+  const handleLetsLogOnClick = () => {
+    setPopUpIsOpen(true);
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -45,9 +49,9 @@ export function Card({
             )}
           </div>
           <div id="footer" className="flex justify-between">
-            <button>Lets Log</button>
+            <button onClick={handleLetsLogOnClick}>Lets Log</button>
             <button>Navigate</button>
-            {/* <CaretDoubleRight size={32} /> */}  
+            {/* <CaretDoubleRight size={32} /> */}
           </div>
         </div>
         {workoutColumns && workoutData && (

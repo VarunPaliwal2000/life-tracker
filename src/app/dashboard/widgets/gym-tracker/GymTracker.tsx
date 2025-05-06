@@ -1,11 +1,12 @@
 "use client";
+
 import { Card } from "@/components/UI/Card/Card";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useSleepStore } from "@/hooks/useSleepStore";
 import { useEffect } from "react";
 import { useGymTrackerColumns } from "./useGymTrackerColumns";
 
-export default function GymTracker() {
+export default function GymTracker({ setPopUpIsOpen }: any) {
   //   const { sessions, setSessions } = useSleepStore();
   const { setSessions } = useSleepStore();
   const { log } = useAnalytics();
@@ -24,15 +25,16 @@ export default function GymTracker() {
       log("load_sleep_sessions", { count: data.length });
     }
     fetchSessions();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Card
       title="Gym Tracker"
+      setPopUpIsOpen={setPopUpIsOpen}
       workoutData={workoutData}
       workoutColumns={workoutColumns}
-      latestWorkoutSynopsis ={ latestWorkoutSynopsis}
+      latestWorkoutSynopsis={latestWorkoutSynopsis}
       latestWorkoutColumns={latestWorkoutColumns}
     />
   );
